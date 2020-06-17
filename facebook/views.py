@@ -84,6 +84,18 @@ def detail_feed(request, pk):
 
     return render(request, 'detail_feed.html', {'feed': article})
 
+def remove_comment(request, pk):
+    comment = Comment.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        if request.POST['password'] == comment.password:
+            comment.delete()
+            return redirect('/')
+        else:
+            return redirect('/fail/')
+
+    return render(request, 'remove_comment.html', { 'comment': comment })
+
 def pages(request):
     pages = Page.objects.all()
     return render(request, 'page_list.html', { 'pages': pages })
