@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% block content %}
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width", initial-scale="1.0">
-        <title>New feed</title>
-    </head>
-
-    <body>
         <style>
             body { background-color: #d7d8dc; }
             * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -138,15 +131,7 @@
                 font-soze: 18px;
             }
         </style>
-        <div class="header">
-            <div class="btn1">
-                <a href="/new"><img src="/static/ic_pencil.jpg" width="22px" style="margin:9px 0 0 13px"></a>
-            </div>
-            <div class="search">
-                <input type="text" class="searchbar" placeholder="Search">
-            </div>
-            <div class="btn2"><img src="/static/ic_info.jpg" width="22px" style="margin:9px 13px 0 0"></div>
-        </div>
+
         <div class="container">
             <div class="form_box">
                 <form method="POST">
@@ -161,11 +146,5 @@
 
             </div>
         </div>
-        <div class="footer">
-            <div class="tab1"><img src="/static/ic_feed.jpg" width="22px" style="margin-top: 15px"></div>
-            <div class="tab2"><img src="/static/ic_person.jpg" width="20px" style="margin-top: 14px"></div>
-            <div class="tab3"><img src="/static/ic_globe.jpg" width="20px" style="margin-top: 14px"></div>
-            <div class="tab4"><img src="/static/ic_etc.jpg" width="20px" style="margin-top: 14px"></div>
-        </div>
-    </body>
-</html>
+
+{% endblock %}

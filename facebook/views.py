@@ -5,12 +5,6 @@ from facebook.models import Comment
 
 # Create your views here.
 
-# def header(request):
-#     return render(request, 'header.html')
-#
-# def footer(request):
-#     return render(request, 'footer.html')
-
 def play(request):
     return render(request, 'play.html')
 
@@ -67,20 +61,21 @@ def myWarn(request):
 
 def newsFeed(request):
     articles = Article.objects.all()
-    return render(request, 'newsfeed.html', { 'articles': articles})
+    return render(request, 'newsfeed.html', {'articles': articles})
 
 def detail_feed(request, pk):
     article = Article.objects.get(pk=pk)
 
     if request.method == 'POST':
-        Comment.objects.create(
-            article=article,
-            author=request.POST['nickname'],
-            text=request.POST['reply'],
-            password=request.POST['password']
-        )
+        if request.POST['nickname'] != '' and request.POST['reply'] != '' and request.POST['password'] != '':
+            Comment.objects.create(
+                article=article,
+                author=request.POST['nickname'],
+                text=request.POST['reply'],
+                password=request.POST['password']
+            )
 
-        return redirect(f'/feed/{ article.pk }')
+            return redirect(f'/feed/{ article.pk }')
 
     return render(request, 'detail_feed.html', {'feed': article})
 
